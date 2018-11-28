@@ -23,7 +23,7 @@ public class AbilityDomain {
     private String name;
     private String url;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "abilitiesDomianAbility_fk")
     private AbilitiesDomain abilitiesDomain;
 

@@ -21,7 +21,7 @@ public class SpeciesDomain {
     private String name;
     private String url;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "pokemonDomain_id")
     private PokemonDomain pokemonDomain;
 
@@ -30,11 +30,9 @@ public class SpeciesDomain {
 
     }
 
-    public SpeciesDomain(int id, String name, String url, PokemonDomain pokemonDomain) {
-        this.id = id;
+    public SpeciesDomain(String name, String url) {
         this.name = name;
         this.url = url;
-        this.pokemonDomain = pokemonDomain;
     }
 
     public int getId() {

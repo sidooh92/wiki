@@ -23,7 +23,7 @@ public class AbilitiesDomain {
 
     private boolean isHidden;
 
-    @OneToOne(mappedBy = "abilitiesDomain")
+    @OneToOne(mappedBy = "abilitiesDomain",cascade=CascadeType.ALL)
     private AbilityDomain ability;
 
 

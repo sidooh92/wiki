@@ -27,10 +27,10 @@ public class PokemonDomain {
     private int baseExperience;
     private int orderPokemon;
 
-    @OneToOne(mappedBy = "pokemonDomain")
+    @OneToOne(mappedBy = "pokemonDomain", cascade=CascadeType.ALL)
     private SpeciesDomain species;
 
-    @OneToMany(mappedBy = "pokemonDomainAbilities" )
+    @OneToMany(mappedBy = "pokemonDomainAbilities", cascade=CascadeType.ALL)
     private List<AbilitiesDomain> abilities;
 
 
