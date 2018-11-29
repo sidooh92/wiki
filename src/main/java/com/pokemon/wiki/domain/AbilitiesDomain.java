@@ -12,13 +12,12 @@ public class AbilitiesDomain {
                 ", slot=" + slot +
                 ", isHidden=" + isHidden +
                 ", ability=" + ability +
-                ", pokemonDomainAbilities=" + pokemonDomainAbilities +
                 '}';
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
     private int slot;
 
     private boolean isHidden;
@@ -42,7 +41,7 @@ public class AbilitiesDomain {
         this.pokemonDomainAbilities = pokemonDomainAbilities;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

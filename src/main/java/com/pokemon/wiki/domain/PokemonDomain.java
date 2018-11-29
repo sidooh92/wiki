@@ -21,7 +21,7 @@ public class PokemonDomain {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
 
     private String name;
     private int baseExperience;
@@ -38,7 +38,7 @@ public class PokemonDomain {
         abilities = new ArrayList<>();
     }
 
-    public PokemonDomain(int id, String name, int baseExperience, int orderPokemon, SpeciesDomain species, List<AbilitiesDomain> abilities) {
+    public PokemonDomain(long id, String name, int baseExperience, int orderPokemon, SpeciesDomain species, List<AbilitiesDomain> abilities) {
         super();
         this.id = id;
         this.name = name;
@@ -48,7 +48,7 @@ public class PokemonDomain {
 
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

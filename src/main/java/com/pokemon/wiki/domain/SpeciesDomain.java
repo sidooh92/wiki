@@ -11,13 +11,12 @@ public class SpeciesDomain {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", url='" + url + '\'' +
-                ", pokemonDomain=" + pokemonDomain +
                 '}';
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private long id;
     private String name;
     private String url;
 
@@ -35,7 +34,7 @@ public class SpeciesDomain {
         this.url = url;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

@@ -6,11 +6,11 @@ import com.pokemon.wiki.domain.PokemonDomain;
 import com.pokemon.wiki.dto.PokemonDto;
 import com.pokemon.wiki.services.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -44,5 +44,11 @@ public class PokemonController {
 
 
     }
+
+    @RequestMapping("/pokemonAll")
+    public List<PokemonDomain> returnAllPokemons() {
+        return pokemonRepository.findAll();
+    }
+
 
 }
