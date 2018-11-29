@@ -59,20 +59,20 @@ public class WikiApplication {
     @Autowired
     SpeciesRepository speciesRepository;
 
-    @Bean
-    public CommandLineRunner test() {
-        return (args -> {
-            SpeciesDomain speciesDomain = new SpeciesDomain("name TEStowe", "url twstowa");
-
-            PokemonDomain pokemonDomain = new PokemonDomain();
-            pokemonDomain.setName("TESTOWY POKEMON");
-            speciesDomain.setPokemonDomain(pokemonDomain);
-            pokemonDomain.setSpecies(speciesDomain);
-            pokemonRepository.save(pokemonDomain);
-
-            //select sql do sprawdzenia na bazie wyniku
-            //SELECT * FROM SPECIES_DOMAIN join POKEMON_DOMAIN on POKEMON_DOMAIN.ID =  SPECIES_DOMAIN.POKEMON_DOMAIN_ID
-        });
-    }
+//    @Bean
+//    public CommandLineRunner test() {
+//        return (args -> {
+//            SpeciesDomain speciesDomain = new SpeciesDomain("name TEStowe", "url twstowa");
+//
+//            PokemonDomain pokemonDomain = new PokemonDomain();
+//            pokemonDomain.setName("TESTOWY POKEMON");
+//            speciesDomain.setPokemonDomain(pokemonDomain);
+//            pokemonDomain.setSpecies(speciesDomain);
+//            pokemonRepository.save(pokemonDomain);
+//
+//            //select sql do sprawdzenia na bazie wyniku
+//            //SELECT * FROM SPECIES_DOMAIN join POKEMON_DOMAIN on POKEMON_DOMAIN.ID =  SPECIES_DOMAIN.POKEMON_DOMAIN_ID
+//        });
+//    }
 
 }

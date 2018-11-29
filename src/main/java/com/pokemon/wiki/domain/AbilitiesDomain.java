@@ -11,7 +11,6 @@ public class AbilitiesDomain {
                 "id=" + id +
                 ", slot=" + slot +
                 ", isHidden=" + isHidden +
-                ", ability=" + ability +
                 '}';
     }
 

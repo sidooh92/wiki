@@ -14,8 +14,6 @@ public class PokemonDomain {
                 ", name='" + name + '\'' +
                 ", baseExperience=" + baseExperience +
                 ", orderPokemon=" + orderPokemon +
-                ", species=" + species +
-                ", abilities=" + abilities +
                 '}';
     }
 
