@@ -9,7 +9,6 @@ import com.pokemon.wiki.dto.SpeciesDto;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -30,7 +29,7 @@ public class PokemonServiceImpl implements PokemonService {
         requestFactory.setHttpClient(httpClient);
 
         PokemonDto pokemonDto = new RestTemplate(requestFactory)
-                .getForObject("https://pokeapi.co/api/v2/pokemon/1", PokemonDto.class);
+                .getForObject("https://pokeapi.co/api/v2/pokemon/"+id, PokemonDto.class);
         return pokemonDto;
     }
 
