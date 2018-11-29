@@ -30,7 +30,10 @@ public class WikiApplication {
     }
 
     //todo
-    //add swagger
+    //add post request to add new custom pokemon
+    //add exception handling when we ask for id where pokemon does not exist
+    //add simple security
+    //use logger!!!
 
     @Bean
     public RestTemplate restTemplate() {
