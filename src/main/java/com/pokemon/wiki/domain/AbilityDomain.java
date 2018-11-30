@@ -16,6 +16,30 @@ public class AbilityDomain {
                 '}';
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public AbilitiesDomain getAbilitiesDomain() {
+        return abilitiesDomain;
+    }
+
+    public void setAbilitiesDomain(AbilitiesDomain abilitiesDomain) {
+        this.abilitiesDomain = abilitiesDomain;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;

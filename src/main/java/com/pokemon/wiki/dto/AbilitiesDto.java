@@ -7,6 +7,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AbilitiesDto {
     private int slot;
 
+    public boolean isHidden() {
+        return isHidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        isHidden = hidden;
+    }
+
+    public AbilityDto getAbility() {
+        return ability;
+    }
+
+    public void setAbility(AbilityDto ability) {
+        this.ability = ability;
+    }
+
     @JsonProperty(value = "is_hidden")
     private boolean isHidden;
 

@@ -5,8 +5,12 @@ import com.pokemon.wiki.dao.PokemonRepository;
 import com.pokemon.wiki.domain.PokemonDomain;
 import com.pokemon.wiki.domain.SpeciesDomain;
 import com.pokemon.wiki.dto.PokemonDto;
+import com.pokemon.wiki.exceptions.EmptyPokemonException;
+import com.pokemon.wiki.exceptions.PokemonDoNotExistException;
 import com.pokemon.wiki.services.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +26,31 @@ public class PokemonController {
     public PokemonController(PokemonRepository pokemonRepository, PokemonService pokemonService) {
         this.pokemonRepository = pokemonRepository;
         this.pokemonService = pokemonService;
+    }
+
+    @GetMapping("/findPokemonName")
+    public PokemonDomain byName(@RequestParam(value = "name") String name) {
+
+        //todo find using name in db and return
+
+        return null;
+    }
+
+    @GetMapping("/countPokemon")
+    public int countPokemon() {
+
+        //todo count pokemon in db
+
+        return 0;
+    }
+
+    @DeleteMapping("/countPokemon/{id}")
+    public void deletePokemon(@PathVariable("id") Long id) throws PokemonDoNotExistException {
+        Optional<PokemonDomain> byId = pokemonRepository.findById(id);
+        if(!byId.isPresent()) throw new PokemonDoNotExistException();
+        byId.ifPresent(p -> pokemonRepository.delete(p));
+
+
     }
 
     @GetMapping("/pokemon")
@@ -51,18 +80,19 @@ public class PokemonController {
 
 
 
-    @PostMapping("/addPokemonBody")
-    public int addNewPokemonByBody() {
+    @GetMapping("/addPokemonBody")
+    public int addNewPokemonByBody() throws EmptyPokemonException {
 
+        throw new EmptyPokemonException();
 
         //return pokemon id after save to db
-        return 0;
+       // return 0;
     }
 
     @PostMapping("/addPokemonUrl")
-    public int addNewPokemon(@RequestParam(value = "name") String pokemonName,
-                             @RequestParam(value = "speciesName") String speciesName,
-                             @RequestParam(value = "speciesUrl") String url) {
+    public ResponseEntity<Integer> addNewPokemon(@RequestParam(value = "name") String pokemonName,
+                      @RequestParam(value = "speciesName") String speciesName,
+                      @RequestParam(value = "speciesUrl") String url) {
 
         PokemonDomain newPokemon = new PokemonDomain();
         SpeciesDomain species = new SpeciesDomain();
@@ -74,8 +104,8 @@ public class PokemonController {
         newPokemon.setSpecies(species);
 
         PokemonDomain save = pokemonRepository.save(newPokemon);
+        return ResponseEntity.status(HttpStatus.CREATED).body(Math.toIntExact(save.getId()));
 
-        return Math.toIntExact(save.getId());
     }
 
 
