@@ -1,6 +1,8 @@
 package com.pokemon.wiki.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -22,6 +24,7 @@ public class SpeciesDomain {
 
     @OneToOne(cascade=CascadeType.ALL)
     @JoinColumn(name = "pokemonDomain_id")
+    @JsonBackReference
     private PokemonDomain pokemonDomain;
 
 

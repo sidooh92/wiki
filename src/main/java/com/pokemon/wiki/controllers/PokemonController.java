@@ -3,6 +3,7 @@ package com.pokemon.wiki.controllers;
 
 import com.pokemon.wiki.dao.PokemonRepository;
 import com.pokemon.wiki.domain.PokemonDomain;
+import com.pokemon.wiki.domain.SpeciesDomain;
 import com.pokemon.wiki.dto.PokemonDto;
 import com.pokemon.wiki.services.PokemonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,11 +60,22 @@ public class PokemonController {
     }
 
     @PostMapping("/addPokemonUrl")
-    public int addNewPokemonByUrlParams() {
+    public int addNewPokemon(@RequestParam(value = "name") String pokemonName,
+                             @RequestParam(value = "speciesName") String speciesName,
+                             @RequestParam(value = "speciesUrl") String url) {
 
+        PokemonDomain newPokemon = new PokemonDomain();
+        SpeciesDomain species = new SpeciesDomain();
+        species.setName(speciesName);
+        species.setUrl(url);
+        species.setPokemonDomain(newPokemon);
 
-        //return pokemon id after save to db
-        return 0;
+        newPokemon.setName(pokemonName);
+        newPokemon.setSpecies(species);
+
+        PokemonDomain save = pokemonRepository.save(newPokemon);
+
+        return Math.toIntExact(save.getId());
     }
 
 

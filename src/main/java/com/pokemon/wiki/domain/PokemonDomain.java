@@ -1,6 +1,9 @@
 package com.pokemon.wiki.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +28,7 @@ public class PokemonDomain {
     private int baseExperience;
     private int orderPokemon;
 
+    @JsonManagedReference
     @OneToOne(mappedBy = "pokemonDomain", cascade=CascadeType.ALL)
     private SpeciesDomain species;
 
