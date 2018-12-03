@@ -31,20 +31,17 @@ public class PokemonController {
     @GetMapping("/findPokemonName")
     public PokemonDomain byName(@RequestParam(value = "name") String name) {
 
-        //todo find using name in db and return
+        //todo find using name in db and return pokemonRepository.findByName
 
         return null;
     }
 
     @GetMapping("/countPokemon")
-    public int countPokemon() {
-
-        //todo count pokemon in db
-
-        return 0;
+    public long countPokemon() {
+        return pokemonRepository.count();
     }
 
-    @DeleteMapping("/countPokemon/{id}")
+    @DeleteMapping("/deletePokemon/{id}")
     public void deletePokemon(@PathVariable("id") Long id) throws PokemonDoNotExistException {
         Optional<PokemonDomain> byId = pokemonRepository.findById(id);
         if(!byId.isPresent()) throw new PokemonDoNotExistException();
